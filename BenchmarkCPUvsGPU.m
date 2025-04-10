@@ -1,4 +1,3 @@
-% hadamard_benchmark_gpu_speedup.m
 % Benchmark CPU vs GPU implementations of Sylvester and Kronecker methods
 % Includes speedup calculation (GPU vs CPU)
 
@@ -8,7 +7,7 @@ close all;
 
 %% Parameters
 max_power = 14;              % Max matrix size: 2^16 = 65536
-sizes = 2.^(2:2:max_power);   % Tested sizes (powers of 2, even exponents)
+sizes = 2.^(2:1:max_power);   % Tested sizes (powers of 2, even exponents)
 num_sizes = length(sizes);
 num_trials = 5;               % Number of timing trials
 speedup_threshold = 1;        % Minimum speedup to display in plot
