@@ -23,10 +23,10 @@ for i = 1:num_sizes
     fprintf('Testing n = %d (2^%d)\n', n, log2(n));
     
     % Time Sylvester method
-    time_sylvester(i) = time_method(@() sylvester_cpu(n), num_trials);
+    time_sylvester(i) = time_method(@() sylvester_hadamard(n), num_trials);
     
     % Time Kronecker method
-    time_kronecker(i) = time_method(@() kronecker_cpu(n), num_trials);
+    time_kronecker(i) = time_method(@() kronecker_hadamard(n), num_trials);
     
     % Calculate speedup factor (Sylvester vs Kronecker)
     speedup(i) = time_kronecker(i)/time_sylvester(i);
@@ -57,37 +57,37 @@ ylabel('Speedup Factor');
 grid on;
 set(gca, 'FontSize', 12);
 
-%% Timing function
-function t = time_method(fcn_handle, num_trials)
+% % Timing function
+% function t = time_method(fcn_handle, num_trials)
 % Measures median execution time across multiple trials
-    times = zeros(num_trials, 1);
-    for k = 1:num_trials
-        tic;
-        fcn_handle();  % Execute target function
-        times(k) = toc;
-    end
-    t = median(times);  % Use median for stable measurement
-end
+%     times = zeros(num_trials, 1);
+%     for k = 1:num_trials
+%         tic;
+%         fcn_handle();  % Execute target function
+%         times(k) = toc;
+%     end
+%     t = median(times);  % Use median for stable measurement
+% end
 
-%% CPU Implementations
-function H = sylvester_cpu(n)
-% Recursive Sylvester implementation
-    if n == 1
-        H = 1;
-        return;
-    end
-    m = n/2;
-    H_prev = sylvester_cpu(m);
-    H = [H_prev,  H_prev;
-         H_prev, -H_prev];
-end
-
-function H = kronecker_cpu(n)
-% Iterative Kronecker product implementation
-    H_base = [1 1; 1 -1];
-    k = log2(n);
-    H = 1;
-    for i = 1:k
-        H = kron(H, H_base);
-    end
-end
+% %% CPU Implementations
+% function H = sylvester_cpu(n)
+% % Recursive Sylvester implementation
+%     if n == 1
+%         H = 1;
+%         return;
+%     end
+%     m = n/2;
+%     H_prev = sylvester_cpu(m);
+%     H = [H_prev,  H_prev;
+%          H_prev, -H_prev];
+% end
+% 
+% function H = kronecker_cpu(n)
+% % Iterative Kronecker product implementation
+%     H_base = [1 1; 1 -1];
+%     k = log2(n);
+%     H = 1;
+%     for i = 1:k
+%         H = kron(H, H_base);
+%     end
+% end
