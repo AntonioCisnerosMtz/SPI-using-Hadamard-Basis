@@ -1,4 +1,4 @@
-# Hadamard Single-pixdel imaging
+# Hadamard Single-pixel imaging
 
 ## BenchmarkCPU
 Benchmark CPU implementations of Sylvester vs Kronecker Hadamard methods
