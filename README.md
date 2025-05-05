@@ -15,7 +15,7 @@ Compares Sylvester vs Kronecker methods with speedup calculation
 ![Captura de pantalla](./figures/BenchmarkCPUvsGPUforN.png)
 
 ## DifferentialMethod_Simulation.m
-Computes positive/negative Hadamard transforms, their inverses, and visualizes results.
+Computes positive/negative Hadamard transforms, their inverses, and visualizes results
 ![Captura de pantalla](./figures/PlotSignalPositiveNegativeDifference.png)
 ![Captura de pantalla](./figures/HadamardTransformPositiveNegativeDifference.png)
 ![Captura de pantalla](./figures/InverseHadamardTransformPositiveNegativeDifference.png)
