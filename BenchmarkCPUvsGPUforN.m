@@ -1,4 +1,3 @@
-% hadamard_n16384_benchmark.m
 % Benchmark CPU vs GPU for N Hadamard matrix generation
 % Compares Sylvester vs Kronecker methods with speedup calculation
 

@@ -70,3 +70,4 @@ grid on;
 set(gca, 'FontSize', 12);
 
 
+print(['figures/', 'BenchmarkCPUvsGPU' ], '-dpng', '-r300');
