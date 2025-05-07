@@ -20,4 +20,13 @@ Computes positive/negative Hadamard transforms, their inverses, and visualizes r
 ![Captura de pantalla](./figures/HadamardTransformPositiveNegativeDifference.png)
 ![Captura de pantalla](./figures/InverseHadamardTransformPositiveNegativeDifference.png)
 
+## HadamardPatternGenerationLabel.m
+This script demonstrates three methods to generate and visualize Hadamard patterns.
+![Captura de pantalla](./figures/HadamardPatternGenerationLabelNatural.png)
+![Captura de pantalla](./figures/HadamardPatternGenerationLabelSequency.png)
+![Captura de pantalla](./figures/HadamardPatternGenerationLabelDyadic.png)
+
+
+
+
 
