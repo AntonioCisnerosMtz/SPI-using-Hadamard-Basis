@@ -39,6 +39,10 @@ This script demonstrates three methods to generate and visualize Hadamard patter
 ### Dyadic
 ![Captura de pantalla](./figures/LabeledHadamardPatternGenerationDyadic.png)
 
+## HadamardTransform.m
+![Captura de pantalla](./figures/HadamardTransform.png)
+
+
 
 
 
