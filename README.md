@@ -23,7 +23,7 @@ Computes positive/negative Hadamard transforms, their inverses, and visualizes r
 ## HadamardPatternGeneration.m
 This script demonstrates three methods to generate and visualize Hadamard patterns.
 ### Natural
-[comment]: ![Captura de pantalla](./figures/HadamardPatternGenerationNatural.png)
+[comment]: <> (![Captura de pantalla](./figures/HadamardPatternGenerationNatural.png))
 ### Sequency
 ![Captura de pantalla](./figures/HadamardPatternGenerationSequency.png)
 ### Dyadic
