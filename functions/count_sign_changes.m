@@ -23,7 +23,7 @@ extended_matrix = [input_matrix, input_matrix(:, end)];
 
 % Initialize result matrix
 sign_change = zeros(rows, 2);
-sign_change(:, 1) = (1:rows)';  % First column: row indices
+sign_change(:, 1) = (0:rows-1)';  % First column: row indices
 
 % Count sign changes for each row
 for row_idx = 1 : rows
