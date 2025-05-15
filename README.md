@@ -48,6 +48,12 @@ This script demonstrates three methods to generate and visualize Hadamard patter
 ## HadamardTransform.m
 ![Captura de pantalla](./figures/HadamardTransform.png)
 
+## LabelHadamardMatrix.m
+![Captura de pantalla](./figures/LabelHadamardMatrix.png)
+
+## LabelHadamardMatrix_NatDyaSeq.m
+![Captura de pantalla](./figures/LabelHadamardMatrix_NatDyaSeq.png)
+
 
 
 
