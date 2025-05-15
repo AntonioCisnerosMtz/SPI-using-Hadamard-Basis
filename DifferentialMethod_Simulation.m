@@ -34,8 +34,8 @@ yi = min([min(min(HTp)) min(min(HTn)) min(min(HT))]); % Lower plot limit
 %%
 % --- Plot 1: Transform Coefficients ---
 clear createFigure; % Clear persistent counter in createFigure (if needed)
-fig1 = createFigure('left', 0, 'bottom', 50, 'width', 800, 'height', 400);
-subplot_tight(1,1,1, 10/100)
+fig1 = createFigure('left', 0, 'bottom', 50, 'width', 800, 'height', 300);
+subplot_tight(1,1,1, 14/100)
 plot(HTp(:), 'LineWidth', 2);  % Plot positive transform coefficients
 grid on;
 axis([1 N^2 yi yf]);           % Set axis limits

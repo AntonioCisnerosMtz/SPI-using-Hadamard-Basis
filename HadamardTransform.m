@@ -6,7 +6,7 @@ n = 7; % max n = 7
 N = 2^n;
 I = double( imread('cameraman.tif')); %original Image
 Inew = imresize(I,[N,N]); % Resize Image
-
+addpath('functions\');
 %% Method 1, H x I x H
 disp('Running Method 1')
 tic
@@ -15,8 +15,10 @@ HT1 = hadamard_transform_method1(Inew); % Hadamard Transform
 IHT1 = inverse_hadamard_transform_method1(HT1); %Inverse Hadamard Transform
 t1 = toc;
 
-figure
+clear createFigure; % Clear persistent counter in createFigure (if needed)
+fig1 = createFigure('left', 0, 'bottom', 550, 'width', 700, 'height', 400);
 subplot(1,3,1)
+
 imagesc(H1)
 title('Hadamard Matrix')
 axis image
@@ -30,7 +32,7 @@ colormap(gca,'jet')
 
 subplot(1,3,3)
 imagesc(IHT1)
-title('Inverse Hadamard Transform')
+title('Inverse Transform')
 axis image
 colormap(gca,'gray')
 %% Method 2, H x I
@@ -41,7 +43,7 @@ HT2 = hadamard_transform_method2(Inew); %Hadamard Transform
 IHT2 = inverse_hadamard_transform_method2(HT2); %Inverse Hadamard Transform
 t2 = toc;
 
-figure
+fig2 = createFigure('left', 700, 'bottom', 550, 'width', 700, 'height', 400);
 subplot(1,3,1)
 imagesc(H2)
 title('Hadamard Matrix')
@@ -57,7 +59,7 @@ colormap(gca,'jet')
 
 subplot(1,3,3)
 imagesc(IHT2)
-title('Inverse Hadamard Transform')
+title('Inverse Transform')
 axis image
 colormap(gca,'gray')
 %% Method 3, Sum
@@ -93,7 +95,7 @@ t3 = toc;
 
 
 
-figure
+fig3 = createFigure('left', 0, 'bottom', 50, 'width', 700, 'height', 400);
 subplot(1,4,1)
 imagesc(IHT_25)
 title('Recovery 25%')
@@ -124,7 +126,7 @@ disp("Execution times (seconds):");
 disp(table(t1, t2, t3, 'VariableNames', {'Method 1', 'Method 2', 'Method 3'}));
 
 %% 
-figure;
+fig3 = createFigure('left', 700, 'bottom', 50, 'width', 700, 'height', 400);
 bar([t1, t2, t3]);
 set(gca, 'XTickLabel', {'Method 1', 'Method 2', 'Method 3'});
 ylabel('Time (seconds)');

@@ -25,7 +25,7 @@
 clear, close all, clc           
 %% User Parameters 
 
-n = 5;         % Base parameter for Hadamard matrix size 
+n = 2;         % Base parameter for Hadamard matrix size 
 N = 2^n;
 HadamardOrder = 3; % 1=Natural, 2=Sequency, 3=Dyadic
 
@@ -102,7 +102,7 @@ set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-',...
 axis image
 colormap gray
 caxis([-1 1])
-%add_matrix_annotations(H1, 'FontSize', 36);
+add_matrix_annotations(H1, 'FontSize', 36);
 
 print(fullfile(outputDir, ['HadamardMatrix', Ordered, '_', num2str(N), 'x', num2str(N)]), '-dpng', '-r300');
 set(gcf,'Renderer','painters');
@@ -112,22 +112,22 @@ print(fullfile(outputDir, ['HadamardMatrix', Ordered, '_', num2str(N), 'x', num2
 % ========================================================================
 % Delta Matrix
 
-% I(2,2) = 1;
-% I_vec = I;
-% fig2 = createFigure('left', 0, 'bottom', 50, 'width', 400, 'height', 400);
-% subplot_tight(1,1,1, esp)
-% imagesc(I)
-% % Format axes (remove labels, add grid)
-% set(gca,'xtick', linspace(0.5,nx+0.5,nx+1), 'ytick', linspace(0.5,ny+.5,ny+1),...
-%     'xticklabel',{[]},'yticklabel',{[]});
-% set(gca,'xgrid', gridOnOff, 'ygrid', gridOnOff, 'gridlinestyle', '-',...
-%     'xcolor', 'k', 'ycolor', 'k');
-% axis image
-% colormap gray
-% %add_matrix_annotations(I, 'NegativeValue', 0, 'FontSize', 36);
-% print(fullfile(outputDir, [filename, '_DeltaMatrix_', num2str(N), 'x', num2str(N)]), '-dpng', '-r300');
-% set(gcf,'Renderer','painters');
-% print(fullfile(outputDir, [filename, '_DeltaMatrix_', num2str(N), 'x', num2str(N)]), '-deps');
+I(2,2) = 1;
+I_vec = I;
+fig2 = createFigure('left', 0, 'bottom', 50, 'width', 400, 'height', 400);
+subplot_tight(1,1,1, esp)
+imagesc(I)
+% Format axes (remove labels, add grid)
+set(gca,'xtick', linspace(0.5,nx+0.5,nx+1), 'ytick', linspace(0.5,ny+.5,ny+1),...
+    'xticklabel',{[]},'yticklabel',{[]});
+set(gca,'xgrid', gridOnOff, 'ygrid', gridOnOff, 'gridlinestyle', '-',...
+    'xcolor', 'k', 'ycolor', 'k');
+axis image
+colormap gray
+add_matrix_annotations(I, 'NegativeValue', 0, 'FontSize', 36);
+print(fullfile(outputDir, ['DeltaMatrix_', num2str(N), 'x', num2str(N)]), '-dpng', '-r300');
+set(gcf,'Renderer','painters');
+print(fullfile(outputDir, ['DeltaMatrix_', num2str(N), 'x', num2str(N)]), '-deps');
 
 % ========================================================================
 % Hadamard Patterns 
@@ -148,7 +148,7 @@ for row = 1 : N
         axis image                
         colormap gray             
         caxis([-1 1])             
-        %add_matrix_annotations(pat, 'FontSize', 12);
+        add_matrix_annotations(pat, 'FontSize', 12);
         I(row,col) = 0;           
         p = p + 1;                %
     end
@@ -180,7 +180,7 @@ set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-',...
 axis image
 colormap gray
 caxis([-1 1])
-%add_matrix_annotations(H2, 'FontSize', 14);
+add_matrix_annotations(H2, 'FontSize', 14);
 print(fullfile(outputDir, ['HadamardMatrix', Ordered, '_', num2str(N), 'x', num2str(N)]), '-dpng', '-r300');
 set(gcf,'Renderer','painters');
 print(fullfile(outputDir, ['HadamardMatrix', Ordered, '_', num2str(N), 'x', num2str(N)]), '-deps', '-r300');
@@ -188,19 +188,19 @@ print(fullfile(outputDir, ['HadamardMatrix', Ordered, '_', num2str(N), 'x', num2
 % ========================================================================
 % Delta vector
 
-% fig5 = createFigure('left', 400, 'bottom', 50, 'width', 100, 'height', 400);
-% imagesc(I_vec(:))
-% axis image
-% colormap gray
-% set(gca,'xtick', linspace(0.5,nx+0.5,nx+1), 'ytick', linspace(0.5,ny+.5,ny+1),...
-%     'xticklabel',{[]},'yticklabel',{[]});
-% set(gca,'xgrid', gridOnOff, 'ygrid', gridOnOff, 'gridlinestyle', '-',...
-%     'xcolor', 'k', 'ycolor', 'k');
-% %add_matrix_annotations(I_vec(:), 'NegativeValue', 0, 'FontSize', 14);
-% 
-% print(fullfile(outputDir, [filename, '_DeltaVector_', num2str(N), 'x', num2str(1)]), '-dpng', '-r300');
-% set(gcf,'Renderer','painters');
-% print(fullfile(outputDir, [filename, '_DeltaVevtor_', num2str(N), 'x', num2str(1)]), '-deps');
+fig5 = createFigure('left', 400, 'bottom', 50, 'width', 100, 'height', 400);
+imagesc(I_vec(:))
+axis image
+colormap gray
+set(gca,'xtick', linspace(0.5,nx+0.5,nx+1), 'ytick', linspace(0.5,ny+.5,ny+1),...
+    'xticklabel',{[]},'yticklabel',{[]});
+set(gca,'xgrid', gridOnOff, 'ygrid', gridOnOff, 'gridlinestyle', '-',...
+    'xcolor', 'k', 'ycolor', 'k');
+add_matrix_annotations(I_vec(:), 'NegativeValue', 0, 'FontSize', 14);
+
+print(fullfile(outputDir, ['DeltaVector_', num2str(N), 'x', num2str(1)]), '-dpng', '-r300');
+set(gcf,'Renderer','painters');
+print(fullfile(outputDir, ['DeltaVevtor_', num2str(N), 'x', num2str(1)]), '-deps');
 
 
 
@@ -220,7 +220,7 @@ for row = 1 : N
         'xticklabel',{[]},'yticklabel',{[]});
     set(gca,'xgrid', gridOnOff, 'ygrid', gridOnOff, 'gridlinestyle', '-',...
         'xcolor', 'k', 'ycolor', 'k');
-    %add_matrix_annotations(pat, 'FontSize', 12);
+    add_matrix_annotations(pat, 'FontSize', 12);
     axis image
     colormap gray
     caxis([-1 1])
@@ -251,7 +251,7 @@ for row = 1 : sqrt(N)
         set(gca,'xgrid', gridOnOff, 'ygrid', gridOnOff, 'gridlinestyle', '-',...
             'xcolor', 'k', 'ycolor', 'k');
         axis image
-        %add_matrix_annotations(pat, 'FontSize', 12);
+        add_matrix_annotations(pat, 'FontSize', 12);
         colormap gray
         caxis([-1 1])
         k = k + 1;                % Move to next row
@@ -264,100 +264,100 @@ print(fullfile(outputDir, ['HadamardPatters', Ordered, '03_', num2str(sqrt(N)), 
 
 %% Individual patterns Label
 
-% pat = ones(sqrt(N), sqrt(N)); % Placeholder for pattern
-% k = 1;                        % Row index counter
-% 
-% % Create Figure 3 at position (800,50) with size 400x400
-% fig8 = createFigure('left', 800, 'bottom', 550, 'width', 400, 'height', 400);
-% 
-% % Iterate over each row of H
-% for row = 1 : sqrt(N)
-%     for col = 1 : sqrt(N)
-%         pat = reshape(H2(k,:), sqrt(N), sqrt(N)); % Reshape row into matrix
-%         subplot_tight(1, 1, 1, [esp, esp]); % Compact subplot
-%         imagesc(pat)                   % Display pattern
-%         % Format axes (same as previous methods)
-%         set(gca,'xtick', linspace(0.5,nx + 0.5,nx + 1), 'ytick', linspace(0.5,ny+.5,ny+1),...
-%             'xticklabel',{[]},'yticklabel',{[]});
-%         set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-',...
-%             'xcolor', 'k', 'ycolor', 'k');
-%         axis image
-%         %add_matrix_annotations(pat, 'FontSize', 36);
-%         colormap gray
-%         caxis([-1 1])
-% 
-% 
-%         print(fullfile(outputDir, ['IndividualHadamardPatters', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-dpng', '-r300');
-%         set(gcf,'Renderer','painters');
-%         print(fullfile(outputDir, ['IndividualHadamardPatters', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-deps');
-%         k = k + 1;                % Move to next row
-%     end
-% end
+pat = ones(sqrt(N), sqrt(N)); % Placeholder for pattern
+k = 1;                        % Row index counter
+
+% Create Figure 3 at position (800,50) with size 400x400
+fig8 = createFigure('left', 800, 'bottom', 550, 'width', 400, 'height', 400);
+
+% Iterate over each row of H
+for row = 1 : sqrt(N)
+    for col = 1 : sqrt(N)
+        pat = reshape(H2(k,:), sqrt(N), sqrt(N)); % Reshape row into matrix
+        subplot_tight(1, 1, 1, [esp, esp]); % Compact subplot
+        imagesc(pat)                   % Display pattern
+        % Format axes (same as previous methods)
+        set(gca,'xtick', linspace(0.5,nx + 0.5,nx + 1), 'ytick', linspace(0.5,ny+.5,ny+1),...
+            'xticklabel',{[]},'yticklabel',{[]});
+        set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-',...
+            'xcolor', 'k', 'ycolor', 'k');
+        axis image
+        add_matrix_annotations(pat, 'FontSize', 36);
+        colormap gray
+        caxis([-1 1])
+
+
+        print(fullfile(outputDir, ['IndividualHadamardPatters', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-dpng', '-r300');
+        set(gcf,'Renderer','painters');
+        print(fullfile(outputDir, ['IndividualHadamardPatters', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-deps');
+        k = k + 1;                % Move to next row
+    end
+end
 
 
 %% Individual patterns - positive
 
-% pat = ones(sqrt(N), sqrt(N)); % Placeholder for pattern
-% k = 1;                        % Row index counter
-% 
-% % Create Figure 3 at position (800,50) with size 400x400
-% fig8 = createFigure('left', 800, 'bottom', 550, 'width', 400, 'height', 400);
-% 
-% % Iterate over each row of H
-% for row = 1 : sqrt(N)
-%     for col = 1 : sqrt(N)
-%         pat = reshape(H2(k,:), sqrt(N), sqrt(N)); % Reshape row into matrix
-%         pat = (pat + 1)/2;
-%         subplot_tight(1, 1, 1, [esp, esp]); % Compact subplot
-%         imagesc(pat)                   % Display pattern
-%         % Format axes (same as previous methods)
-%         set(gca,'xtick', linspace(0.5,nx + 0.5,nx + 1), 'ytick', linspace(0.5,ny+.5,ny+1),...
-%             'xticklabel',{[]},'yticklabel',{[]});
-%         set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-',...
-%             'xcolor', 'k', 'ycolor', 'k');
-%         axis image
-%         %add_matrix_annotations(pat, 'FontSize', 36, 'NegativeValue', 0);
-%         colormap gray
-%         caxis([0 1])
-% 
-%         print(fullfile(outputDir, ['IndividualHadamardPattersPositive', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-dpng', '-r300');
-%         set(gcf,'Renderer','painters');
-%         print(fullfile(outputDir, ['IndividualHadamardPattersPositive', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-deps');
-%         k = k + 1;                % Move to next row
-%     end
-% end
+pat = ones(sqrt(N), sqrt(N)); % Placeholder for pattern
+k = 1;                        % Row index counter
+
+% Create Figure 3 at position (800,50) with size 400x400
+fig8 = createFigure('left', 800, 'bottom', 550, 'width', 400, 'height', 400);
+
+% Iterate over each row of H
+for row = 1 : sqrt(N)
+    for col = 1 : sqrt(N)
+        pat = reshape(H2(k,:), sqrt(N), sqrt(N)); % Reshape row into matrix
+        pat = (pat + 1)/2;
+        subplot_tight(1, 1, 1, [esp, esp]); % Compact subplot
+        imagesc(pat)                   % Display pattern
+        % Format axes (same as previous methods)
+        set(gca,'xtick', linspace(0.5,nx + 0.5,nx + 1), 'ytick', linspace(0.5,ny+.5,ny+1),...
+            'xticklabel',{[]},'yticklabel',{[]});
+        set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-',...
+            'xcolor', 'k', 'ycolor', 'k');
+        axis image
+        add_matrix_annotations(pat, 'FontSize', 36, 'NegativeValue', 0);
+        colormap gray
+        caxis([0 1])
+
+        print(fullfile(outputDir, ['IndividualHadamardPattersPositive', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-dpng', '-r300');
+        set(gcf,'Renderer','painters');
+        print(fullfile(outputDir, ['IndividualHadamardPattersPositive', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-deps');
+        k = k + 1;                % Move to next row
+    end
+end
 %% Individual patterns - negative
 
 
-% pat = ones(sqrt(N), sqrt(N)); % Placeholder for pattern
-% k = 1;                        % Row index counter
-% 
-% % Create Figure 3 at position (800,50) with size 400x400
-% fig8 = createFigure('left', 800, 'bottom', 550, 'width', 400, 'height', 400);
-% 
-% % Iterate over each row of H
-% for row = 1 : sqrt(N)
-%     for col = 1 : sqrt(N)
-%         pat = reshape(H2(k,:), sqrt(N), sqrt(N)); % Reshape row into matrix
-%         pat = (1 - pat)/2;
-%         subplot_tight(1, 1, 1, [esp, esp]); % Compact subplot
-%         imagesc(pat)                   % Display pattern
-%         % Format axes (same as previous methods)
-%         set(gca,'xtick', linspace(0.5,nx + 0.5,nx + 1), 'ytick', linspace(0.5,ny+.5,ny+1),...
-%             'xticklabel',{[]},'yticklabel',{[]});
-%         set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-',...
-%             'xcolor', 'k', 'ycolor', 'k');
-%         axis image
-%         %add_matrix_annotations(pat, 'FontSize', 36, 'NegativeValue', 0);
-%         colormap gray
-%         caxis([0 1])
-% 
-%         print(fullfile(outputDir, ['IndividualHadamardPattersNegative', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-dpng', '-r300');
-%         set(gcf,'Renderer','painters');
-%         print(fullfile(outputDir, ['IndividualHadamardPattersNegative', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-deps');
-%         k = k + 1;                % Move to next row
-%     end
-% end
+pat = ones(sqrt(N), sqrt(N)); % Placeholder for pattern
+k = 1;                        % Row index counter
+
+% Create Figure 3 at position (800,50) with size 400x400
+fig8 = createFigure('left', 800, 'bottom', 550, 'width', 400, 'height', 400);
+
+% Iterate over each row of H
+for row = 1 : sqrt(N)
+    for col = 1 : sqrt(N)
+        pat = reshape(H2(k,:), sqrt(N), sqrt(N)); % Reshape row into matrix
+        pat = (1 - pat)/2;
+        subplot_tight(1, 1, 1, [esp, esp]); % Compact subplot
+        imagesc(pat)                   % Display pattern
+        % Format axes (same as previous methods)
+        set(gca,'xtick', linspace(0.5,nx + 0.5,nx + 1), 'ytick', linspace(0.5,ny+.5,ny+1),...
+            'xticklabel',{[]},'yticklabel',{[]});
+        set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-',...
+            'xcolor', 'k', 'ycolor', 'k');
+        axis image
+        add_matrix_annotations(pat, 'FontSize', 36, 'NegativeValue', 0);
+        colormap gray
+        caxis([0 1])
+
+        print(fullfile(outputDir, ['IndividualHadamardPattersNegative', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-dpng', '-r300');
+        set(gcf,'Renderer','painters');
+        print(fullfile(outputDir, ['IndividualHadamardPattersNegative', Ordered, '03_', num2str(N), 'x', num2str(N), '_', num2str(k)]), '-deps');
+        k = k + 1;                % Move to next row
+    end
+end
 
 
 
