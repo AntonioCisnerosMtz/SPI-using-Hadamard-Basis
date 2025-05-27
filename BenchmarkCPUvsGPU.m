@@ -11,7 +11,13 @@ sizes = 2.^(2:1:max_power);   % Tested sizes (powers of 2, even exponents)
 num_sizes = length(sizes);
 num_trials = 5;               % Number of timing trials
 speedup_threshold = 1;        % Minimum speedup to display in plot
-
+%%
+addpath('functions\')
+outputDir = 'C:\Users\annto\OneDrive\Doctorado\Paper\figures\MATLAB\';  %<================ change dir
+currentFile = mfilename('fullpath');  
+[~, filename] = fileparts(currentFile);  
+outputDir = [outputDir, filename];
+[status,msg] = mkdir(outputDir);
 %% Preallocate arrays
 % Execution times
 time_sylvester_cpu = zeros(num_sizes, 1);
@@ -40,7 +46,9 @@ for i = 1:num_sizes
 end
 
 %% Plot results
-figure('Position', [100 100 1400 600]);
+clear createFigure; % Clear persistent counter in createFigure (if needed)
+fig1 = createFigure('left', 0, 'bottom', 50, 'width', 1000, 'height', 400);
+%subplot_tight(1,1,1, esp)
 
 % Execution time comparison
 subplot(1, 2, 1);
@@ -56,12 +64,13 @@ legend('Location', 'northwest');
 grid on;
 set(gca, 'FontSize', 12);
 
+
 % Speedup comparison
 subplot(1, 2, 2);
 semilogx(sizes, speedup_sylvester, 'mo-', 'LineWidth', 2, 'DisplayName', 'Sylvester');
 hold on;
 semilogx(sizes, speedup_kronecker, 'co-', 'LineWidth', 2, 'DisplayName', 'Kronecker');
-yline(speedup_threshold, 'k--', 'Speedup = 1', 'LineWidth', 1.5);
+%yline(speedup_threshold, 'k--', 'Speedup = 1', 'LineWidth', 1.5);
 title('GPU Speedup Factor');
 xlabel('Matrix Size');
 ylabel('Speedup (CPU Time / GPU Time)');
@@ -70,4 +79,7 @@ grid on;
 set(gca, 'FontSize', 12);
 
 
-print(['figures/', 'BenchmarkCPUvsGPU' ], '-dpng', '-r300');
+print(fullfile(outputDir, ['SylvesterVSKronecker']), '-dpng', '-r300');
+set(gcf,'Renderer','painters');
+print(fullfile(outputDir, ['SylvesterVSKronecker']), '-depsc');
+
