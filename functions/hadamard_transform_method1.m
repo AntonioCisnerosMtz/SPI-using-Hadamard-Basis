@@ -1,4 +1,4 @@
-function HT = hadamard_transform_method1(X, method)
+function HT = hadamard_transform_method1(f, method)
 %HADAMARD_TRANSFORM Compute the Hadamard transform of a matrix.
 %   HT = HADAMARD_TRANSFORM(X, METHOD) computes the Hadamard transform of X
 %   using the specified METHOD ('kronecker' or 'sylvester'). If METHOD is
@@ -18,7 +18,7 @@ else
 end
 
 % Check if X is square
-[N, M] = size(X);
+[N, M] = size(f);
 if N ~= M
     error('Input matrix X must be square.');
 end
@@ -29,11 +29,15 @@ switch method
         H = kronecker_hadamard(N);
     case 'sylvester'
         H = sylvester_hadamard(N);
+    case 'walsh'
+        H = hadamard_sequency(N);
+    case 'paley'
+        H = hadamard_paley(N);
     otherwise
         error('Invalid method. Use ''kronecker'' or ''sylvester''.');
 end
 
 % Compute Hadamard transform
-HT = H * X * H;
+HT = H * f * H;
 
 end

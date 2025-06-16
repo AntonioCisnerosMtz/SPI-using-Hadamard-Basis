@@ -1,4 +1,4 @@
-function [IHT, t] = inverse_hadamard_transform_method2(HT, method, num_trials)
+function IHT = inverse_hadamard_transform_method2(HT, method)
 %INVERSE_HADAMARD_TRANSFORM2 Compute inverse Hadamard transform using vectorized method.
 %   IHT = INVERSE_HADAMARD_TRANSFORM2(HT, METHOD) computes the inverse
 %   transform by vectorizing HT and using a Hadamard matrix of size N^2.
@@ -12,8 +12,7 @@ function [IHT, t] = inverse_hadamard_transform_method2(HT, method, num_trials)
 
 % Default method
 if nargin < 2
-    method = 'kronecker';
-    num_trials = 1;
+    method = 'walsh';
 else
     method = lower(method);
 end
@@ -37,34 +36,17 @@ end
 % Generate Hadamard matrix of size N^2
 M_size = col^2;
 switch method
-    case 'kronecker'
-        H = kronecker_hadamard(M_size);
-    case 'sylvester'
-        H = sylvester_hadamard(M_size);
     case 'walsh'
         H = hadamard_sequency(M_size);
     case 'paley'
         H = hadamard_paley(M_size);
     otherwise
-        error('Invalid method. Use ''kronecker'' or ''sylvester''.');
+        error('Invalid method. Use ''walsh'' or ''paley''.');
 end
 
 % Compute inverse transform
-% HT = HT';
-
-
-
-
-
-times = zeros(num_trials, 1);
-for k = 1:num_trials
-    tic;
-    %HT_vec = HT(:);
-    IHT_vec = (1 / M_size) * H * HT(:);
-    IHT = reshape(IHT_vec, [col, col]);
-    times(k) = toc;
-end
-t = median(times); % Use median for stable measurement
-
+HT_vec = HT(:);
+IHT_vec = (1 / M_size) * H * HT_vec;
+IHT = reshape(IHT_vec, [col, col]);
 end
 

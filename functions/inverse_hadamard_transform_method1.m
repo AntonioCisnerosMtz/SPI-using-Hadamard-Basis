@@ -1,4 +1,4 @@
-function IHT = inverse_hadamard_transform_method1(HT, method)
+function [IHT, t] = inverse_hadamard_transform_method1(HT, method, num_trials)
 %INVERSE_HADAMARD_TRANSFORM Compute the inverse Hadamard transform of a matrix.
 %   IHT = INVERSE_HADAMARD_TRANSFORM(HT, METHOD) computes the inverse
 %   Hadamard transform of HT using the specified METHOD. If METHOD is not
@@ -13,6 +13,7 @@ function IHT = inverse_hadamard_transform_method1(HT, method)
 % Check input arguments
 if nargin < 2
     method = 'kronecker';
+    num_trials = 1;
 else
     method = lower(method);
 end
@@ -29,10 +30,22 @@ switch method
         H = kronecker_hadamard(N);
     case 'sylvester'
         H = sylvester_hadamard(N);
+    case 'walsh'
+        H = hadamard_sequency(N);
+    case 'paley'
+        H = hadamard_paley(N);
+        
     otherwise
         error('Invalid method. Use ''kronecker'' or ''sylvester''.');
 end
 
 % Compute inverse Hadamard transform
-IHT = (1/(N^2)) * H * HT * H;
 
+
+times = zeros(num_trials, 1);
+for k = 1:num_trials
+    tic;
+    IHT = (1/(N^2)) * H * HT * H;
+    times(k) = toc;
+end
+t = median(times); % Use median for stable measurement
