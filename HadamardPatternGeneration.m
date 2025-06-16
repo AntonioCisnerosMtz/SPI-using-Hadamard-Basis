@@ -25,9 +25,9 @@
 clear, close all, clc           
 %% User Parameters 
 
-n = 5;         % Base parameter for Hadamard matrix size 
+n = 2;         % Base parameter for Hadamard matrix size 
 N = 2^n;
-HadamardOrder = 3; % 1=Natural, 2=Sequency, 3=Dyadic
+HadamardOrder = 1; % 1=Natural, 2=Sequency, 3=Dyadic
 
 switch HadamardOrder
     case 1 % Natural order (MATLAB's default Hadamard)
@@ -131,7 +131,7 @@ print(fullfile(outputDir, ['HadamardMatrix', Ordered, '_', num2str(N), 'x', num2
 
 % ========================================================================
 % Hadamard Patterns 
-I(2,2) = 0;
+%I(2,2) = 0;
 fig3 = createFigure('left', 400, 'bottom', 550, 'width', 400, 'height', 400);
 % Iterate over each element in matrix I
 for row = 1 : N

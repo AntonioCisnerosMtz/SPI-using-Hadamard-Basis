@@ -9,6 +9,16 @@ N = 2^n;                % Image dimension (power of 2 for Hadamard compatibility
 I = im2double(imread('cameraman.tif')); % Load image (uint8 to double conversion)
 Inew = imresize(I, [N, N]);          % Resize image to NxN
 addpath('functions\');
+%%
+outputDir = 'C:\Users\annto\OneDrive\Doctorado\Paper\figures\MATLAB\';  %<================ change dir
+currentFile = mfilename('fullpath');  
+[~, filename] = fileparts(currentFile);  
+outputDir = [outputDir, filename];
+[status,msg] = mkdir(outputDir);
+%%
+
+
+
 % --- Hadamard Matrix Generation ---
 H = kronecker_hadamard(N^2);     % Generate N^2 x N^2 Hadamard matrix (Kronecker method)
 Hp = (H + 1)/2;                  % Positive Hadamard matrix (values: 0-1)
@@ -99,4 +109,11 @@ imagesc(IHT);
 axis image;
 title('Inverse (Difference)');
 colormap(gca, 'gray');
-print(['figures/', 'InverseHadamardTransformPositiveNegativeDifference' ], '-dpng', '-r300');
+
+
+% print(['figures/', 'InverseHadamardTransformPositiveNegativeDifference' ], '-dpng', '-r300');
+
+
+print(fullfile(outputDir, ['InverseHadamardTransformPositiveNegativeDifference']), '-dpng', '-r300');
+set(gcf,'Renderer','painters');
+print(fullfile(outputDir, ['InverseHadamardTransformPositiveNegativeDifference']), '-depsc');
