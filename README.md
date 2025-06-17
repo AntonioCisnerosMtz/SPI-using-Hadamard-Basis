@@ -54,6 +54,9 @@ This script demonstrates three methods to generate and visualize Hadamard patter
 ## LabelHadamardMatrix_NatDyaSeq.m
 ![Captura de pantalla](./figures/LabelHadamardMatrix_NatDyaSeq.png)
 
+##RecoveryTime.m
+![Captura de pantalla](./figures/RecoveryTime.png)
+
 
 
 
