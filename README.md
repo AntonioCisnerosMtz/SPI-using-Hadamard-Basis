@@ -57,6 +57,9 @@ This script demonstrates three methods to generate and visualize Hadamard patter
 ## RecoveryTime.m
 ![Captura de pantalla](./figures/RecoveryTime.png)
 
+## HadamardWalshZigZag.m
+![Captura de pantalla](./figures/HadamardWalshZigZag.png)
+
 
 
 
