@@ -59,19 +59,19 @@ grid on
 
 
 
-figure
-for i = 1 : p
-    subplot(1,p,i)
-    imagesc(I(:,:,i)), axis image, colormap gray
-    title({[ num2str(percentage(i)), '%' ]}, {' '}, 'FontName', 'Arial', 'FontSize', 11)
-    xticks([])
-    yticks([])
-    xlabel(sprintf('%4.2f %s', time1(i) * (10^(3 * pfx_num)), pfx),'Interpreter', 'tex', 'FontName', 'Arial');
-end 
-
-print(fullfile(outputDir, ['PartialRecoveryMethod1_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-dpng', '-r300');
-set(gcf,'Renderer','painters');
-print(fullfile(outputDir, ['PartialRecoveryMethod1_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-depsc');
+% figure
+% for i = 1 : p
+%     subplot(1,p,i)
+%     imagesc(I(:,:,i)), axis image, colormap gray
+%     title({[ num2str(percentage(i)), '%' ]}, {' '}, 'FontName', 'Arial', 'FontSize', 11)
+%     xticks([])
+%     yticks([])
+%     xlabel(sprintf('%4.2f %s', time1(i) * (10^(3 * pfx_num)), pfx),'Interpreter', 'tex', 'FontName', 'Arial');
+% end 
+% 
+% print(fullfile(outputDir, ['PartialRecoveryMethod1_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-dpng', '-r300');
+% set(gcf,'Renderer','painters');
+% print(fullfile(outputDir, ['PartialRecoveryMethod1_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-depsc');
 
 
 %% Method 2, H x I
@@ -107,18 +107,18 @@ grid on
 
 
 
-figure
-for i = 1 : p
-    subplot(1,p,i)
-    imagesc(I(:,:,i)), axis image, colormap gray
-    xticks([])
-    yticks([])
-    xlabel(sprintf('%4.2f %s', time2(i) * (10^(3 * pfx_num)), pfx),'Interpreter', 'tex', 'FontName', 'Arial');
-end 
-
-print(fullfile(outputDir, ['PartialRecoveryMethod2_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-dpng', '-r300');
-set(gcf,'Renderer','painters');
-print(fullfile(outputDir, ['PartialRecoveryMethod2_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-depsc');
+% figure
+% for i = 1 : p
+%     subplot(1,p,i)
+%     imagesc(I(:,:,i)), axis image, colormap gray
+%     xticks([])
+%     yticks([])
+%     xlabel(sprintf('%4.2f %s', time2(i) * (10^(3 * pfx_num)), pfx),'Interpreter', 'tex', 'FontName', 'Arial');
+% end 
+% 
+% print(fullfile(outputDir, ['PartialRecoveryMethod2_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-dpng', '-r300');
+% set(gcf,'Renderer','painters');
+% print(fullfile(outputDir, ['PartialRecoveryMethod2_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-depsc');
 %% Method 3, Sum
 disp('Running Method 3')
 
@@ -147,19 +147,19 @@ xlabel('%')
 ylabel('time (s)')
 grid on
 
-figure
-for i = 1 : p
-    subplot(1,p,i)
-    imagesc(I(:,:,i)), axis image, colormap gray
-    %title([ num2str(percentage(i)), '%' ] )
-    xticks([])
-    yticks([])
-    xlabel(sprintf('%4.2f %s', time3(i) * (10^(3 * pfx_num)), pfx),'Interpreter', 'tex', 'FontName', 'Arial');
-end 
-
-print(fullfile(outputDir, ['PartialRecoveryMethod3_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-dpng', '-r300');
-set(gcf,'Renderer','painters');
-print(fullfile(outputDir, ['PartialRecoveryMethod3_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-depsc');
+% figure
+% for i = 1 : p
+%     subplot(1,p,i)
+%     imagesc(I(:,:,i)), axis image, colormap gray
+%     %title([ num2str(percentage(i)), '%' ] )
+%     xticks([])
+%     yticks([])
+%     xlabel(sprintf('%4.2f %s', time3(i) * (10^(3 * pfx_num)), pfx),'Interpreter', 'tex', 'FontName', 'Arial');
+% end 
+% 
+% print(fullfile(outputDir, ['PartialRecoveryMethod3_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-dpng', '-r300');
+% set(gcf,'Renderer','painters');
+% print(fullfile(outputDir, ['PartialRecoveryMethod3_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-depsc');
 
 %% Method 4, TVAL3
 disp('Running Method 4')
@@ -217,19 +217,19 @@ xlabel('%')
 ylabel('time (s)')
 grid on
 
-figure
-for i = 1 : p
-    subplot(1,p,i)
-    imagesc(I(:,:,i)), axis image, colormap gray
-    %title([ num2str(percentage(i)), '%' ] )
-    xticks([])
-    yticks([])
-    xlabel(sprintf('%4.2f %s', time4(i) * (10^(3 * pfx_num)), pfx),'Interpreter', 'tex', 'FontName', 'Arial');
-end 
-
-print(fullfile(outputDir, ['PartialRecoveryMethod4_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-dpng', '-r300');
-set(gcf,'Renderer','painters');
-print(fullfile(outputDir, ['PartialRecoveryMethod4_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-depsc');
+% figure
+% for i = 1 : p
+%     subplot(1,p,i)
+%     imagesc(I(:,:,i)), axis image, colormap gray
+%     %title([ num2str(percentage(i)), '%' ] )
+%     xticks([])
+%     yticks([])
+%     xlabel(sprintf('%4.2f %s', time4(i) * (10^(3 * pfx_num)), pfx),'Interpreter', 'tex', 'FontName', 'Arial');
+% end 
+% 
+% print(fullfile(outputDir, ['PartialRecoveryMethod4_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-dpng', '-r300');
+% set(gcf,'Renderer','painters');
+% print(fullfile(outputDir, ['PartialRecoveryMethod4_', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-depsc');
 
 
 %%
@@ -254,7 +254,7 @@ semilogy(percentage,time2,LineWidth=2)
 semilogy(percentage,time3,LineWidth=2)
 semilogy(percentage,time4,LineWidth=2)
 hold off
-print(fullfile(outputDir, ['PartialRecoveryTime', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-dpng', '-r300');
-set(gcf,'Renderer','painters');
-print(fullfile(outputDir, ['PartialRecoveryTime', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-depsc');
+% print(fullfile(outputDir, ['PartialRecoveryTime', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-dpng', '-r300');
+% set(gcf,'Renderer','painters');
+% print(fullfile(outputDir, ['PartialRecoveryTime', num2str(p) ,'parts_', num2str(N),'x', num2str(N), '_', Ordered]), '-depsc');
 %% Method 4, TVAL3

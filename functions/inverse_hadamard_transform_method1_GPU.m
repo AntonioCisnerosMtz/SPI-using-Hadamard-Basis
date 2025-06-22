@@ -1,4 +1,4 @@
-function [IHT, t] = inverse_hadamard_transform_method1(HT, method, num_trials)
+function [IHT, t] = inverse_hadamard_transform_method1_GPU(HT, method, num_trials)
 %INVERSE_HADAMARD_TRANSFORM Compute the inverse Hadamard transform of a matrix.
 %   IHT = INVERSE_HADAMARD_TRANSFORM(HT, METHOD) computes the inverse
 %   Hadamard transform of HT using the specified METHOD. If METHOD is not
@@ -24,6 +24,7 @@ if N ~= M
     error('Input matrix HT must be square.');
 end
 
+reset(gpuDevice)
 % Generate Hadamard matrix
 switch method
     case 'kronecker'
@@ -40,14 +41,20 @@ switch method
 end
 
 % Compute inverse Hadamard transform
-
+reset(gpuDevice)
+HT = gpuArray(HT);
+H = gpuArray(H);
 
 times = zeros(num_trials, 1);
 for k = 1:num_trials
     tic;
     IHT = (1/(N^2)) * H * HT * H;
+    wait(gpuDevice);
     times(k) = toc;
+    %reset(gpuDevice)
 end
 
 t = median(times); % Use median for stable measurement
+IHT = gather(IHT);
+reset(gpuDevice)
 end

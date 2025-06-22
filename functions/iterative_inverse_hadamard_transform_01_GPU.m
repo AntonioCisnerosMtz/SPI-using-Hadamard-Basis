@@ -1,18 +1,13 @@
-function [IHT, t] = iterative_inverse_hadamard_transform_01(HT, method, num_trials)
+function [IHT, t] = iterative_inverse_hadamard_transform_01_GPU(HT, method, num_trials)
 %ITERATIVE_INVERSE_HADAMARD Compute inverse Hadamard transform iteratively.
-%   [IHT_full, IHT_25, IHT_50, IHT_75] = ITERATIVE_INVERSE_HADAMARD(HT, METHOD)
 %   computes the inverse Hadamard transform of HT using an iterative approach.
-%   Intermediate results are returned at 25%%, 50%%, 75%%, and 100%% completion.
 %   METHOD can be 'kronecker' (default) or 'sylvester'.
 %
 %   Inputs:
 %       HT - N x N transformed matrix (N must be a power of 2)
 %       METHOD - Optional method string
-%   Outputs:
-%       IHT_full - Final inverse transformed matrix (100%% completion)
-%       IHT_25 - Intermediate result at 25%% completion
-%       IHT_50 - Intermediate result at 50%% completion
-%       IHT_75 - Intermediate result at 75%% completion
+
+
 
 % Default method
 if nargin < 2
@@ -56,6 +51,10 @@ switch method
 end
 
 
+reset(gpuDevice)
+HT = gpuArray(single(HT));
+H = gpuArray(single(H));
+
 
 times = zeros(num_trials, 1);
 
@@ -68,8 +67,14 @@ for k = 1:num_trials
             IHT3 = IHT3 + contribution;    
         end
         IHT = (1 / N) * IHT3; % Final result (100% completion)
+        wait(gpuDevice);
     times(k) = toc;
 end
 t = median(times); % Use median for stable measurement
+IHT = gather(IHT);
+reset(gpuDevice)
+
+
+
 
 end
