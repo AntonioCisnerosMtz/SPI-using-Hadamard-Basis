@@ -63,6 +63,9 @@ This script demonstrates three methods to generate and visualize Hadamard patter
 ## HadamardWalshZigZag.m
 ![Captura de pantalla](./figures/HadamardWalshZigZag.png)
 
+## RecoveryTimeZigZag_CPUvsGPU.m
+![Captura de pantalla](./figures/RecoveryTimeZigZag_CPUvsGPU.png)
+
 
 
 
