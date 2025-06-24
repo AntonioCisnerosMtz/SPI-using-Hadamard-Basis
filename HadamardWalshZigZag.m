@@ -2,6 +2,9 @@ clear
 close all
 clc
 
+
+
+
 addpath(genpath('functions'))
 
 path = [pwd, '\Matrix\'];
@@ -14,19 +17,20 @@ H = hadamard_sequency(N);
 
 
 x_vect = 1:1:N^2;
-x_mat = invZigzag(x_vect)
+x_mat = invZigzag(x_vect);
+%ZigZagscan(x_mat')
 f = zeros(N,N);
 Hzz = zeros(N^2:N^2);
 p = 1;
 
 
-% figure
-% imagesc(H), axis image, colormap gray
-% set(gca,'xtick', linspace(0.5,nx+0.5,nx+1), 'ytick', linspace(0.5,ny+.5,ny+1), 'xticklabel',{[]},'yticklabel',{[]});
-% set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle' , '-', 'xcolor', 'k', 'ycolor', 'k');
-
-
 figure
+imagesc(H), axis image, colormap gray
+set(gca,'xtick', linspace(0.5,nx+0.5,nx+1), 'ytick', linspace(0.5,ny+.5,ny+1), 'xticklabel',{[]},'yticklabel',{[]});
+set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle' , '-', 'xcolor', 'k', 'ycolor', 'k');
+
+
+% figure
 for row = 1 : N
 
     for col = 1 : N
