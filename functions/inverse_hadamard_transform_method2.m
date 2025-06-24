@@ -45,6 +45,9 @@ switch method
         H = hadamard_sequency(M_size);
     case 'paley'
         H = hadamard_paley(M_size);
+    case 'zigzag'
+        H = hadamard_zigzag(M_size);
+
     otherwise
         error('Invalid method. Use ''kronecker'' or ''sylvester''.');
 end
@@ -60,7 +63,7 @@ times = zeros(num_trials, 1);
 for k = 1:num_trials
     tic;
     %HT_vec = HT(:);
-    IHT_vec = (1 / M_size) * H * HT(:);
+    IHT_vec = (1 / M_size) * H' * HT(:);
     IHT = reshape(IHT_vec, [col, col]);
     times(k) = toc;
 end

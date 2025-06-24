@@ -46,6 +46,8 @@ switch method
         H = hadamard_sequency(N^2);
     case 'paley'
         H = hadamard_paley(N^2);
+    case 'zigzag'
+        H = hadamard_zigzag(N^2);
     otherwise
         error('Invalid method. Use ''kronecker'' or ''sylvester''.');
 end

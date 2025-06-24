@@ -1,3 +1,4 @@
+
 function HT = hadamard_transform_method2(X, method)
 %HADAMARD_TRANSFORM2 Compute Hadamard transform using vectorized method.
 %   HT = HADAMARD_TRANSFORM2(X, METHOD) computes the Hadamard transform of X
@@ -39,6 +40,9 @@ switch method
         H = hadamard_sequency(row^2);
     case 'paley'
         H = hadamard_paley(row^2);
+    case 'zigzag'
+        H = hadamard_zigzag(row^2);
+
     otherwise
         error('Invalid method. Use ''kronecker'' or ''sylvester''.');
 end

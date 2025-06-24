@@ -51,6 +51,8 @@ switch method
         H = hadamard_sequency(N^2);
     case 'paley'
         H = hadamard_paley(N^2);
+    case 'zigzag'
+        H = hadamard_zigzag(N^2);
     otherwise
         error('Invalid method. Use ''kronecker'' or ''sylvester''.');
 end
@@ -67,7 +69,7 @@ for k = 1:num_trials
             contribution = HT(i) * reshape(H(i, :), [N, N]); % Compute contribution from the i-th row
             IHT3 = IHT3 + contribution;    
         end
-        IHT = (1 / N) * IHT3; % Final result (100% completion)
+        IHT = (1 / N^2) * IHT3; % Final result (100% completion)
     times(k) = toc;
 end
 t = median(times); % Use median for stable measurement
